@@ -15,7 +15,7 @@ position = Vector2( 0, -60 )
 texture = ExtResource( 1 )
 
 [node name="Basket" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( -60, 6 )
+position = Vector2( -1, -90 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -60.5 )

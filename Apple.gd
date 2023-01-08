@@ -28,3 +28,8 @@ func _on_Apple_area_entered(area):
 	
 	if area.name == "Basket":
 		queue_free()
+
+func _on_Apple_body_entered(body):
+	if body.name == "Ground":
+		attached = true
+		velocity = Vector2.ZERO
