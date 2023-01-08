@@ -1,7 +1,7 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
-var walkSpeed = 350
+var walkSpeed = 650
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

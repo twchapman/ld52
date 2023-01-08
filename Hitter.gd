@@ -1,12 +1,11 @@
 extends KinematicBody2D
 
 var gravity = ProjectSettings.get("physics/2d/default_gravity")
-var jumpSpeed = 2000
-var walkSpeed = 250
+var jumpSpeed = 1700
+var walkSpeed = 350
 var grounded = true
 
 var velocity = Vector2(0, 0)
-var prevscale = 0
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
@@ -28,10 +27,12 @@ func _physics_process(delta):
 		else:
 			velocity.x = 0
 	if velocity.x > 0:
-			self.scale.x = 1
+			#self.scale.x = 1
+			$Club.scale.x = 1
 	elif velocity.x < 0:
-			self.scale.x = -1
-	
+			#self.scale.x = -1
+			$Club.scale.x = -1
+
 	velocity.y += gravity
 	velocity = move_and_slide(velocity)
 	if get_slide_count() > 0:

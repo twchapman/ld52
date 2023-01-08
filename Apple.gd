@@ -25,3 +25,6 @@ func _on_Apple_area_entered(area):
 		var vdirection = sign(global_position.y - area.global_position.y)
 		velocity += Vector2(hdirection, vdirection) * 400
 		attached = false
+	
+	if area.name == "Basket":
+		queue_free()
