@@ -20,6 +20,7 @@ func swing():
 	swingTimer = swingDuration
 	$CollisionShape2D.disabled = false
 	canSwing = false
+	$SwingPlayer.play()
 
 func stow():
 	$SpriteStowed.visible = true

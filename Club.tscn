@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/club.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/club_hit.png" type="Texture" id=2]
 [ext_resource path="res://Club.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/swing.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 13.0
@@ -23,5 +24,9 @@ position = Vector2( 32, -33 )
 rotation = 0.785398
 shape = SubResource( 1 )
 disabled = true
+
+[node name="SwingPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_Club_area_entered"]

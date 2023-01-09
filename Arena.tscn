@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Apple.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/tree.png" type="Texture" id=2]
+[ext_resource path="res://Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Catcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/TimerFontMain.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Fonts/TimerFontSmall.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Director.gd" type="Script" id=8]
 
 [node name="Arena" type="Node2D"]
@@ -14,49 +14,97 @@
 position = Vector2( 265, 234 )
 scale = Vector2( 0.75, 0.75 )
 
-[node name="Tree" type="Sprite" parent="Stage"]
-position = Vector2( 511, 266 )
-scale = Vector2( 0.59875, 0.59875 )
-texture = ExtResource( 2 )
-
 [node name="Hitter" parent="Stage" instance=ExtResource( 4 )]
 position = Vector2( 76, 504 )
+z_index = 2
 
 [node name="Catcher" parent="Stage" instance=ExtResource( 5 )]
 position = Vector2( 890, 505 )
+z_index = 2
+
+[node name="Tree" parent="Stage" instance=ExtResource( 1 )]
+position = Vector2( 501.333, 505.333 )
+
+[node name="Tree3" parent="Stage" instance=ExtResource( 1 )]
+position = Vector2( -49.3333, 505.333 )
+
+[node name="Tree2" parent="Stage" instance=ExtResource( 1 )]
+position = Vector2( 1056, 505.333 )
 
 [node name="Ground" parent="Stage" instance=ExtResource( 3 )]
 position = Vector2( 503, 605 )
 scale = Vector2( 10.552, 1 )
 
-[node name="Apple" parent="Stage" instance=ExtResource( 1 )]
-position = Vector2( 339, 184 )
-
-[node name="Apple2" parent="Stage" instance=ExtResource( 1 )]
-position = Vector2( 464, 97 )
-
-[node name="Apple3" parent="Stage" instance=ExtResource( 1 )]
-position = Vector2( 589, 225 )
-
-[node name="Apple4" parent="Stage" instance=ExtResource( 1 )]
-position = Vector2( 699, 107 )
-
 [node name="Director" type="Node" parent="."]
 script = ExtResource( 8 )
-TimerLabelPath = NodePath("../CanvasLayer/Container_Timer/Label_Timer")
+InstructionsContainerPath = NodePath("../CanvasLayer/InstructionsContainer")
+GameplayContainerPath = NodePath("../CanvasLayer/GameplayContainer")
+TimerLabelPath = NodePath("../CanvasLayer/GameplayContainer/Label_Timer")
+ScoreLabelPath = NodePath("../CanvasLayer/GameplayContainer/Label_Score")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Container_Timer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="GameplayContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.021
 anchor_right = 0.5
 anchor_bottom = 0.071
 grow_horizontal = 2
 
-[node name="Label_Timer" type="Label" parent="CanvasLayer/Container_Timer"]
+[node name="Label_Timer" type="Label" parent="CanvasLayer/GameplayContainer"]
 margin_right = 132.0
 margin_bottom = 66.0
 size_flags_vertical = 8
 custom_fonts/font = ExtResource( 6 )
 text = "0:00"
+
+[node name="Label_Score" type="Label" parent="CanvasLayer/GameplayContainer"]
+margin_top = 70.0
+margin_right = 132.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+align = 1
+
+[node name="InstructionsContainer" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/InstructionsContainer"]
+modulate = Color( 1, 1, 1, 0.572549 )
+margin_left = -2.0
+margin_top = 252.0
+margin_right = 1285.0
+margin_bottom = 418.0
+
+[node name="Label" type="Label" parent="CanvasLayer/InstructionsContainer"]
+margin_left = 111.0
+margin_top = 620.0
+margin_right = 531.0
+margin_bottom = 695.0
+custom_fonts/font = ExtResource( 7 )
+text = "A/D: Move
+Space: Jump/Hit the Fruit"
+align = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/InstructionsContainer"]
+margin_left = 797.0
+margin_top = 618.0
+margin_right = 1079.0
+margin_bottom = 693.0
+custom_fonts/font = ExtResource( 7 )
+text = "Left/Right: Move
+Catch the fruit!"
+align = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/InstructionsContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 414.0
+margin_top = 260.0
+margin_right = 834.0
+margin_bottom = 395.0
+custom_fonts/font = ExtResource( 6 )
+text = "Press Any Key
+To Start"
+align = 1
