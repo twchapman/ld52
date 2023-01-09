@@ -40,6 +40,9 @@ func start():
 
 func _process(delta):	
 	if Global_.playing:
+		if Input.is_key_pressed(KEY_ESCAPE):
+			game_over(false)
+			return
 		timer += delta
 		var seconds = floor(timer)
 		var millis = fmod(timer, 1)
@@ -63,6 +66,9 @@ func _input(event):
 func update_score(score):
 	ScoreLabel.text = "%d" % score
 
-func game_over():
+func game_over(delay = true):
 	reset()
-	gameoverTimer = gameoverBuffer
+	if delay:
+		gameoverTimer = gameoverBuffer
+	else:
+		gameoverTimer = 0
